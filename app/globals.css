@@ -1,26 +1,98 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--portfolio-navy);
+  --color-ivory: var(--portfolio-ivory);
+  --color-gold: var(--portfolio-gold);
+  --color-gold-ink: var(--portfolio-gold-ink);
+  --color-gold-dark: var(--portfolio-gold-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+  --shadow-soft: 0 18px 48px rgb(15 26 42 / 0.08);
+  --shadow-premium: 0 28px 90px rgb(15 26 42 / 0.18);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #fbf6ea;
+  --foreground: #0f1a2a;
+  --card: #fffaf0;
+  --card-foreground: #0f1a2a;
+  --popover: #fffaf0;
+  --popover-foreground: #0f1a2a;
+  --primary: #0f1a2a;
+  --primary-foreground: #fff8e8;
+  --secondary: #efe5d2;
+  --secondary-foreground: #0f1a2a;
+  --muted: #f0e7d8;
+  --muted-foreground: #5b6470;
+  --accent: #e2aa25;
+  --accent-foreground: #0f1a2a;
+  --destructive: #b42318;
+  --border: rgb(15 26 42 / 0.12);
+  --input: rgb(15 26 42 / 0.14);
+  --ring: #d9a21b;
+  --radius: 0.5rem;
+  --portfolio-navy: #0f1a2a;
+  --portfolio-ivory: #fbf6ea;
+  --portfolio-gold: #d9a21b;
+  --portfolio-gold-ink: #9a6500;
+  --portfolio-gold-dark: #c48d11;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      linear-gradient(rgb(251 246 234 / 0.94), rgb(251 246 234 / 0.94)),
+      radial-gradient(circle at 20% 20%, rgb(217 162 27 / 0.08), transparent 32%),
+      linear-gradient(135deg, rgb(15 26 42 / 0.035) 0 1px, transparent 1px 16px);
+    color: var(--foreground);
+  }
+
+  a,
+  button {
+    @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-gold/45;
+  }
+
+  ::selection {
+    background: rgb(217 162 27 / 0.35);
+    color: var(--portfolio-navy);
+  }
 }
